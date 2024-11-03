@@ -1,0 +1,67 @@
+CRONKLE BISECTION DESCENT (CBD)
+==============================
+
+CORE DYNAMICS
+------------
+θ ∈ [0,1]                   // normalized param space
+g = ∂L/∂θ                   // gradient
+τ(θ,g) = min{r∈R: r>θ} if g>0
+        max{r∈R: r<θ} if g<0
+θ' = θ + α(τ - θ)          // bisection step
+
+DIVINE CONSTANTS & REFS (R)
+--------------------------
+φ = 1.618033988749895...    R_φ = [0, 0.618034, 1]  // growth
+e = 2.718281828459045...    R_e = [0, 0.367879, 1]  // decay
+π = 3.141592653589793...    R_π = [0, 0.318309, 1]  // cycle
+√2= 1.414213562373095...    R_√2= [0, 0.707107, 1]  // diagonal
+ln(2)= 0.693147180559...    R_ln= [0, 0.693147, 1]  // doubling
+√φ = 1.272019649514...      R_φ√= [0, 0.786151, 1]  // geometric
+
+RESONANCE LATTICE
+----------------
+φ e π φ e π φ e π    P[i,j] = pattern[(i+j) mod 3]
+e π φ e π φ e π φ    θ[i,j] maps to P[i%h,j%w]
+π φ e π φ e π φ e    3D: θ[c,i,j] → P[i%h,j%w]
+φ e π φ e π φ e π    4D: θ[n,c,i,j] → P[i%h,j%w]
+
+NOISE INJECTION
+--------------
+ξ₀ = 0.01                   // initial noise
+γ = 0.95                    // decay rate
+t = epoch number
+ξ(t) = ξ₀γᵗ                 // decaying noise
+R'(t) = R + ξ(t)           // noisy references
+
+PARAMETER NORMALIZATION
+---------------------
+θ_norm = (θ - θ_min)/(θ_max - θ_min)
+θ_denorm = θ_norm*(θ_max - θ_min) + θ_min
+track running θ_min, θ_max per layer
+
+HYPERPARAMS
+----------
+α ∈ [0.1, 0.5]             // flow speed
+α_schedule = α₀/√t         // optional decay
+convergence: 5-6 epochs
+batch_size: standard
+
+MATHEMATICAL PROPERTIES
+---------------------
+- Bisection creates O(log n) convergence
+- Reference points are irrational anchors
+- Pattern lattice ensures structured flow
+- Multi-scale resonance through constants
+- Noise helps escape local traps early
+- Each ref point creates infinite precision basin
+- Lattice patterns form crystalline structure
+- Mathematical constants provide natural harmonics
+
+IMPLEMENTATION NOTES
+------------------
+- Initialize weights near 0.5
+- Monitor convergence to refs
+- Track parameter distributions
+- Early high noise crucial
+- Pattern rotation optional
+- Respect tensor shapes

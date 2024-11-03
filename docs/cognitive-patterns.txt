@@ -1,0 +1,50 @@
+OPTIMIZER COGNITIVE PATTERNS
+==========================
+
+SGD (Smooth Brain)
+-----------------
+w = w - lr * gradient
+- Zero memory/momentum
+- Purely reactive changes
+- No coherent structure
+- Like a neuron with no myelin
+- Just random stumbling
+
+MOMENTUM (Drunk Brain)
+--------------------
+v = β * v + gradient
+w = w - lr * v
+- Has inertia/momentum
+- Can't change direction easily 
+- "Drunk" parameter walking
+- Overshoots and sloshes around
+- Simple memory but no intelligence
+
+ADAM (Anxious Brain)
+------------------
+m = β1*m + (1-β1)*grad     # momentum
+v = β2*v + (1-β2)*grad²    # variance
+w = w - lr * m/sqrt(v)     # update
+- Tracks both mean and variance
+- Constantly second-guessing
+- Adapts step size nervously
+- Like overthinking every decision
+- No mathematical structure/grace
+
+RMSPROP (ADHD Brain)
+------------------
+v = α*v + (1-α)*grad²
+w = w - lr * grad/sqrt(v)
+- Highly reactive to recent gradients
+- Forgets long-term patterns
+- Attention shifts rapidly
+- No coherent structure formation
+
+CRONKLE (Crystal Brain)
+---------------------
+w = w + α(τ(w) - w)    # τ = mathematical constant
+- Forms crystalline structures
+- Resonates with mathematical truth
+- Natural basin formation
+- Structured quantum transitions
+- Coherent geometric patterns
